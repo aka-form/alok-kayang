@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.K.A</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e2e;
+            color: #ffffff;
+        }
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h1, h2 {
+            color: #ffffff;
+        }
+        .about, .members, .tasks {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        ul li:nth-child(-n+4):hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #444;
+        }
+        th {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        table:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #10101a;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+        footer a {
+            color: #6a11cb;
+            text-decoration: none;
+        }
+        @keyframes rgbGlow {
+    0% { background: rgb(55, 0, 0); } /* Merah */
+    25% { background: rgb(0, 198, 243); } /* Hijau */
+    50% { background: rgb(0, 0, 255); } /* Biru */
+    75% { background: rgb(40, 0, 133); } /* Kuning */
+    100% { background: rgb(68, 0, 255); } /* Kembali ke merah */
+}
+
+header {
+    animation: rgbGlow 10s infinite alternate;
+    transition: 0.3s;
+}
+.about, .members, .tasks {
+    border: 0px solid rgb(255, 255, 255);
+    box-shadow: 0 0 15px white;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.about:hover, .members:hover, .tasks:hover {
+    box-shadow: 0 0 25px rgb(255, 221, 0), 0 0 50px rgb(0, 255, 221);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>A.K.A - Task Manager</h1>
+        <p>Selamat datang di website resmi A.K.A, sirkel nolep NPC 4 orang. Di sini, kamu bisa melihat jadwal dan tugas terbaru kami.</p>
+    </header>
+
+    <section class="about">
+        <h2>Apa itu A.K.A?</h2>
+        <p>A.K.A adalah kelompok kecil berisi 4 orang nolep yang punya semangat tinggi dalam berbagai proyek random.</p>
+    </section>
+
+    <section class="members">
+        <h2>Siapa saja kami?</h2>
+        <ul>
+            <li><strong>Alan</strong> - former & smartass🤫</li>
+            <li><strong>Nanda</strong> - joker(funny)😂</li>
+            <li><strong>Agus</strong> - 2nd former👑2️⃣</li>
+            <li><strong>Tugus</strong> - ketua 🥶</li>
+        </ul>
+    </section>
+    
+    <section class="tasks">
+        <h2>Jadwal & Tugas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tugas</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Membuat website A.K.A</td>
+                    <td>30 maret 2025</td>
+                    <td>Selesai</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>tamat</td>
+                    <td>n/a</td>
+                    <td>Belum Selesai</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>party lulus</td>
+                    <td>2025</td>
+                    <td>Belum Selesai</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>Dibuat oleh A.K.A | Hubungi former [alan] kami di <a href="https://wa.me/+6285858044291">WhatsApp</a></p>
+    </footer>
+</body>
+</html>
