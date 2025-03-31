@@ -102,93 +102,8 @@ header {
 }
 
     </style>
-    <style>
-    .slide-container {
-        width: 100%;
-        overflow: hidden;
-        position: relative;
-    }
-    .slide {
-        display: none;
-        width: 100%;
-        transition: opacity 0.5s;
-    }
-    .active {
-        display: block;
-    }
-    .nav-buttons {
-        text-align: center;
-        margin-top: 10px;
-    }
-    .nav-buttons button {
-        padding: 10px 15px;
-        margin: 5px;
-        border: none;
-        background: #2575fc;
-        color: white;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-    .nav-buttons button:hover {
-        background: #6a11cb;
-    }
-</style>
-
-<script>
-    let slideIndex = 0;
-
-    function showSlide(index) {
-        let slides = document.querySelectorAll(".slide");
-        if (index >= slides.length) slideIndex = 0;
-        if (index < 0) slideIndex = slides.length - 1;
-
-        slides.forEach(slide => slide.classList.remove("active"));
-        slides[slideIndex].classList.add("active");
-    }
-
-    function nextSlide() {
-        slideIndex++;
-        showSlide(slideIndex);
-    }
-
-    function prevSlide() {
-        slideIndex--;
-        showSlide(slideIndex);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        showSlide(slideIndex);
-    });
-</script>
-
 </head>
 <body>
-<section class="slide-container">
-    <div class="slide active">
-        <h2>Produk Kami</h2>
-        <p>Produk-produk unggulan dari A.K.A.</p>
-    </div>
-    <div class="slide">
-        <h2>Scan untuk Join!</h2>
-        <img src="qrcode.png" alt="QR Code" width="200">
-    </div>
-    <div class="slide">
-        <h2>Anggota Kami</h2>
-        <p>Berikut adalah foto anggota A.K.A.</p>
-        <img src="anggota.jpg" alt="Anggota Kami" width="200">
-    </div>
-    <div class="slide">
-        <h2>Sekolah Kami</h2>
-        <p>SMPN 1 ABIANSEMAL, IX J</p>
-    </div>
-</section>
-
-<div class="nav-buttons">
-    <button onclick="prevSlide()">Sebelumnya</button>
-    <button onclick="nextSlide()">Selanjutnya</button>
-</div>
-
-    
     <header>
         <h1>A.K.A - Task Manager</h1>
         <p>Selamat datang di website resmi A.K.A, sirkel nolep NPC 4 orang. Di sini, kamu bisa melihat jadwal dan tugas terbaru kami.</p>
@@ -245,6 +160,8 @@ header {
 
     <footer>
         <p>Dibuat oleh A.K.A [SMPN 1 ABIANSEMAL,IX J]| Hubungi former [alan] kami di <a href="https://wa.me/+6285858044291">WhatsApp</a></p>
-    </footer>
+       <p>Scan untuk join:</p>
+    <img src="qrcode.png" alt="QR Code" width="150">
+</footer>
 </body>
 </html>
