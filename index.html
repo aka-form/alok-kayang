@@ -100,6 +100,28 @@ header {
 .about:hover, .members:hover, .tasks:hover {
     box-shadow: 0 0 25px rgb(255, 221, 0), 0 0 50px rgb(0, 255, 221);
 }
+.yt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.yt-video {
+  width: 90%;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  border: 3px solid white;
+  box-shadow: 0 0 20px white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.yt-video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
     </style>
 </head>
@@ -163,5 +185,17 @@ header {
        <p>bagikan QR web kami:</p>
     <img src="qrcode.png" alt="QR Code" width="150">
 </footer>
+
+    <div class="yt-container">
+  <div class="yt-video">
+    <iframe 
+      src="https://www.youtube.com/embed/VzAAdMLfNlg?si=yj-fZSQI0PyyzE2w" 
+      title="YouTube video player" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
 </body>
 </html>
