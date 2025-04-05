@@ -122,6 +122,26 @@ header {
   height: 100%;
   border: none;
 }
+.photo-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.photo-gallery img {
+  width: calc(25% - 15px); /* 4 foto per baris */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.photo-gallery img:hover {
+  transform: scale(1.05);
+}
 
     </style>
 </head>
@@ -195,6 +215,12 @@ header {
       allowfullscreen>
     </iframe>
   </div>
+</div>
+<div class="photo-gallery">
+  <img src="1.jpg" alt="Foto 1">
+  <img src="2.jpg" alt="Foto 2">
+  <img src="3.jpg" alt="Foto 3">
+  <img src="4.jpg" alt="Foto 4">
 </div>
 
 </body>
