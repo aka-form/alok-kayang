@@ -1,540 +1,650 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.K.A - Freaking fad Extreme</title>
-    <style>
-        /* Import font keren */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+<!DOCTYPE html> 
+<html lang="id"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>A.K.A - Freaking fad Extreme</title> 
+    <style> 
+        /* Import font keren */ 
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap'); 
+ 
+        /* Global Styles */ 
+        body { 
+            font-family: 'Orbitron', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: radial-gradient(circle, #0c0f0a 0%, #000 70%); 
+            color: #e5e5dc; 
+            overflow-x: hidden; 
+        } 
+ 
+        /* Particle-like animated background (using CSS gradients) */ 
+        body::before { 
+            content: ""; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            background: url('https://www.transparenttextures.com/patterns/asfalt-light.png'); 
+            opacity: 0.08; 
+            z-index: -1; 
+            animation: pulseBG 10s infinite alternate; 
+        } 
+        @keyframes pulseBG { 
+            from { opacity: 0.05; } 
+            to { opacity: 0.12; } 
+        } 
+ 
+        /* Glitch Effect for Header Text */ 
+        .glitch { 
+            position: relative; 
+            color: #cddc39; 
+            font-size: 2.5em; 
+            text-shadow: 2px 2px 0 #76ff03; 
+        } 
+        .glitch::before, 
+        .glitch::after { 
+            content: attr(data-text); 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            opacity: 0.8; 
+        } 
+        .glitch::before { 
+            color: #00ff88; 
+            z-index: -1; 
+            animation: glitch-anim 2s infinite linear alternate-reverse; 
+        } 
+        .glitch::after { 
+            color: #39ff14; 
+            z-index: -2; 
+            animation: glitch-anim2 3s infinite linear alternate-reverse; 
+        } 
+        @keyframes glitch-anim { 
+            0% { clip: rect(0, 900px, 0, 0); transform: translate(0); } 
+            20% { clip: rect(10px, 900px, 50px, 0); transform: translate(-2px, -2px); } 
+            40% { clip: rect(85px, 900px, 90px, 0); transform: translate(2px, 2px); } 
+            60% { clip: rect(20px, 900px, 70px, 0); transform: translate(-2px, 0); } 
+            80% { clip: rect(50px, 900px, 80px, 0); transform: translate(2px, -2px); } 
+            100% { clip: rect(0, 900px, 0, 0); transform: translate(0); } 
+        } 
+        @keyframes glitch-anim2 { 
+            0% { clip: rect(0, 900px, 0, 0); transform: translate(0); } 
+            20% { clip: rect(15px, 900px, 45px, 0); transform: translate(2px, 2px); } 
+            40% { clip: rect(75px, 900px, 85px, 0); transform: translate(-2px, -2px); } 
+            60% { clip: rect(10px, 900px, 60px, 0); transform: translate(2px, 0); } 
+            80% { clip: rect(45px, 900px, 70px, 0); transform: translate(-2px, 2px); } 
+            100% { clip: rect(0, 900px, 0, 0); transform: translate(0); } 
+        } 
+ 
+        /* Animations */ 
+        @keyframes fadeInUp { 
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            } 
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        } 
+        .animate { 
+            opacity: 0; 
+            animation: fadeInUp 1s forwards; 
+        } 
+ 
+        /* Header */ 
+        header { 
+            background: linear-gradient(135deg, #4a934a, #2e7d32); 
+            padding: 30px; 
+            text-align: center; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); 
+            position: relative; 
+            overflow: hidden; 
+            animation: fadeInUp 1s forwards; 
+        } 
+        header h1 { 
+            margin: 0; 
+        } 
+        header p { 
+            font-size: 1.2em; 
+            margin-top: 10px; 
+        } 
+        /* Apply glitch effect to header title */ 
+        .header-title { 
+            display: inline-block; 
+        } 
+ 
+        /* Sections */ 
+        section { 
+            max-width: 900px; 
+            margin: 50px auto; 
+            padding: 30px; 
+            background: rgba(50, 50, 50, 0.25); 
+            border-radius: 10px; 
+            border: 1px solid #76ff03; 
+            box-shadow: 0 0 25px rgba(118, 255, 3, 0.35); 
+            animation: fadeInUp 1s forwards; 
+        } 
+        section h2 { 
+            color: #cddc39; 
+            text-shadow: 0 0 5px #76ff03; 
+            margin-bottom: 20px; 
+        } 
+ 
+        /* Members Section */ 
+        .member-list { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 20px; 
+            padding: 20px; 
+        } 
+ 
+        .member-card { 
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 20px; 
+            border-radius: 12px; 
+            width: 200px; 
+            text-align: center; 
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            position: relative; 
+            cursor: pointer; 
+        } 
+ 
+        .member-card:hover { 
+            transform: scale(1.1); 
+            box-shadow: 0 0 20px white, 0 0 30px rgba(0, 255, 255, 0.6); 
+        } 
+ 
+        .member-name { 
+            font-size: 1em; 
+            font-weight: bold; 
+            transition: font-size 0.3s ease; 
+        } 
+ 
+        .member-card:hover .member-name { 
+            font-size: 1.3em; 
+        } 
+ 
+        /* Task Table */ 
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+            animation: fadeInUp 1s forwards; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Tambahkan transisi ke tabel */ 
+        } 
+        th, td { 
+            padding: 15px; 
+            text-align: center; 
+            border-bottom: 1px solid #444; 
+        } 
+        th { 
+            background: rgba(200, 255, 0, 0.1); 
+        } 
+        tr:nth-child(even) { 
+            background: rgba(255, 255, 255, 0.05); 
+        } 
+        /* Style untuk hover pada baris tabel */ 
+        table:hover { 
+            transform: scale(1.08); /* Memperbesar seluruh tabel saat hover */ 
+            box-shadow: 0 10px 20px rgba(118, 255, 3, 0.3); 
+        } 
+ 
+        /* Footer */ 
+        footer { 
+            text-align: center; 
+            padding: 30px; 
+            background: #121212; 
+            color: #cddc39; 
+            animation: fadeInUp 1s forwards; 
+        } 
+        footer a { 
+            color: #8bc34a; 
+            text-decoration: none; 
+        } 
+ 
+        /* YouTube Container */ 
+        .yt-container { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 40px 0; 
+            animation: fadeInUp 1s forwards; 
+        } 
+        .yt-video { 
+            width: 90%; 
+            max-width: 720px; 
+            aspect-ratio: 16 / 9; 
+            border: 3px solid #76ff03; 
+            box-shadow: 0 0 25px #00ff00; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: transform 0.4s ease, box-shadow 0.4s ease; 
+        } 
+        .yt-video:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 0 35px #00ff00, 0 0 45px #76ff03; 
+            cursor: pointer; 
+        } 
+        .yt-video iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        } 
+ 
+        /* Photo Gallery */ 
+        .photo-gallery { 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            padding: 30px; 
+            animation: fadeInUp 1s forwards; 
+        } 
+        .photo-gallery img { 
+            width: calc(25% - 20px); 
+            aspect-ratio: 16 / 9; 
+            object-fit: cover; 
+            border-radius: 10px; 
+            box-shadow: 0 0 15px rgba(118, 255, 3, 0.5); 
+            transition: transform 0.4s ease; 
+        } 
+        .photo-gallery img:hover { 
+            transform: scale(1.1) rotate(1deg); 
+            cursor: pointer; 
+        } 
+        body { 
+            cursor: url('https://custom-cursor.com/cursors/walter-white.cur'), auto; 
+        } 
+ 
+        /* Efek Asap Hijau */ 
+        #smoke-canvas { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none; 
+            z-index: -1; 
+        } 
+ 
+        .sparkle { 
+            position: absolute; 
+            width: 6px; 
+            height: 6px; 
+            border-radius: 50%; 
+            background: #76ff03; 
+            box-shadow: 0 0 10px #76ff03, 0 0 20px #cddc39; 
+            pointer-events: none; 
+            animation: sparkle-fade 0.5s forwards; 
+        } 
+ 
+        @keyframes sparkle-fade { 
+            0% { opacity: 1; transform: scale(1); } 
+            100% { opacity: 0; transform: scale(0.5); } 
+        } 
 
-        /* Global Styles */
-        body {
-            font-family: 'Orbitron', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle, #0c0f0a 0%, #000 70%);
-            color: #e5e5dc;
-            overflow-x: hidden;
-        }
-
-        /* Particle-like animated background (using CSS gradients) */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
-            opacity: 0.08;
-            z-index: -1;
-            animation: pulseBG 10s infinite alternate;
-        }
-        @keyframes pulseBG {
-            from { opacity: 0.05; }
-            to { opacity: 0.12; }
-        }
-
-        /* Glitch Effect for Header Text */
-        .glitch {
-            position: relative;
-            color: #cddc39;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 0 #76ff03;
-        }
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0.8;
-        }
-        .glitch::before {
-            color: #00ff88;
-            z-index: -1;
-            animation: glitch-anim 2s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            color: #39ff14;
-            z-index: -2;
-            animation: glitch-anim2 3s infinite linear alternate-reverse;
-        }
-        @keyframes glitch-anim {
-            0% { clip: rect(0, 900px, 0, 0); transform: translate(0); }
-            20% { clip: rect(10px, 900px, 50px, 0); transform: translate(-2px, -2px); }
-            40% { clip: rect(85px, 900px, 90px, 0); transform: translate(2px, 2px); }
-            60% { clip: rect(20px, 900px, 70px, 0); transform: translate(-2px, 0); }
-            80% { clip: rect(50px, 900px, 80px, 0); transform: translate(2px, -2px); }
-            100% { clip: rect(0, 900px, 0, 0); transform: translate(0); }
-        }
-        @keyframes glitch-anim2 {
-            0% { clip: rect(0, 900px, 0, 0); transform: translate(0); }
-            20% { clip: rect(15px, 900px, 45px, 0); transform: translate(2px, 2px); }
-            40% { clip: rect(75px, 900px, 85px, 0); transform: translate(-2px, -2px); }
-            60% { clip: rect(10px, 900px, 60px, 0); transform: translate(2px, 0); }
-            80% { clip: rect(45px, 900px, 70px, 0); transform: translate(-2px, 2px); }
-            100% { clip: rect(0, 900px, 0, 0); transform: translate(0); }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate {
-            opacity: 0;
-            animation: fadeInUp 1s forwards;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #4a934a, #2e7d32);
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 1s forwards;
-        }
-        header h1 {
-            margin: 0;
-        }
-        header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        /* Apply glitch effect to header title */
-        .header-title {
-            display: inline-block;
-        }
-
-        /* Sections */
-        section {
+        /* Dropdown Video Styles */
+        .video-dropdown {
             max-width: 900px;
             margin: 50px auto;
-            padding: 30px;
-            background: rgba(50, 50, 50, 0.25);
-            border-radius: 10px;
-            border: 1px solid #76ff03;
-            box-shadow: 0 0 25px rgba(118, 255, 3, 0.35);
+            padding: 0;
             animation: fadeInUp 1s forwards;
         }
-        section h2 {
-            color: #cddc39;
-            text-shadow: 0 0 5px #76ff03;
-            margin-bottom: 20px;
-        }
 
-        /* Members Section */
-        .member-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .member-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 12px;
-            width: 200px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .member-card:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px white, 0 0 30px rgba(0, 255, 255, 0.6);
-        }
-
-        .member-name {
-            font-size: 1em;
-            font-weight: bold;
-            transition: font-size 0.3s ease;
-        }
-
-        .member-card:hover .member-name {
-            font-size: 1.3em;
-        }
-
-        /* Task Table */
-        table {
+        .dropdown-btn {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            animation: fadeInUp 1s forwards;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Tambahkan transisi ke tabel */
-        }
-        th, td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #444;
-        }
-        th {
-            background: rgba(200, 255, 0, 0.1);
-        }
-        tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        /* Style untuk hover pada baris tabel */
-        table:hover {
-            transform: scale(1.08); /* Memperbesar seluruh tabel saat hover */
-            box-shadow: 0 10px 20px rgba(118, 255, 3, 0.3);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #121212;
-            color: #cddc39;
-            animation: fadeInUp 1s forwards;
-        }
-        footer a {
-            color: #8bc34a;
-            text-decoration: none;
-        }
-
-        /* YouTube Container */
-        .yt-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 0;
-            animation: fadeInUp 1s forwards;
-        }
-        .yt-video {
-            width: 90%;
-            max-width: 720px;
-            aspect-ratio: 16 / 9;
-            border: 3px solid #76ff03;
-            box-shadow: 0 0 25px #00ff00;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .yt-video:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 35px #00ff00, 0 0 45px #76ff03;
-            cursor: pointer;
-        }
-        .yt-video iframe {
-            width: 100%;
-            height: 100%;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #4a934a, #2e7d32);
+            color: white;
             border: none;
-        }
-
-        /* Photo Gallery */
-        .photo-gallery {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 30px;
-            animation: fadeInUp 1s forwards;
-        }
-        .photo-gallery img {
-            width: calc(25% - 20px);
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(118, 255, 3, 0.5);
-            transition: transform 0.4s ease;
-        }
-        .photo-gallery img:hover {
-            transform: scale(1.1) rotate(1deg);
+            border-radius: 10px 10px 0 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2em;
             cursor: pointer;
-        }
-        body {
-            cursor: url('https://custom-cursor.com/cursors/walter-white.cur'), auto;
-        }
-
-        /* Efek Asap Hijau */
-        #smoke-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(118, 255, 3, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid #76ff03;
         }
 
-        .sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #76ff03;
-            box-shadow: 0 0 10px #76ff03, 0 0 20px #cddc39;
-            pointer-events: none;
-            animation: sparkle-fade 0.5s forwards;
+        .dropdown-btn:hover {
+            background: linear-gradient(135deg, #5fb85f, #3a9c3a);
+            box-shadow: 0 0 25px rgba(118, 255, 3, 0.8);
         }
 
-        @keyframes sparkle-fade {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.5); }
+        .dropdown-btn::after {
+            content: "⮟";
+            margin-left: 10px;
+            transition: transform 0.3s ease;
         }
 
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <audio id="opening-sound" src="griy/assets/bd.mp3" preload="auto"></audio>
-    <audio id="click-sound" src="griy/assets/click.mp3" preload="auto"></audio>
-</head>
-<body>
-    <canvas id="smoke-canvas"></canvas>
+        .dropdown-btn.active::after {
+            transform: rotate(180deg);
+        }
 
-    <header class="animate">
-        <h1 class="glitch header-title" data-text="A.K.A - Task Manager">A.K.A - Task Manager</h1>
-        <p>Selamat datang di website resmi A.K.A, sirkel nolep 4 orang. Lihat jadwal & tugas terbaru kami!</p>
-    </header>
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: rgba(50, 50, 50, 0.25);
+            border-radius: 0 0 10px 10px;
+            border: 1px solid #76ff03;
+            border-top: none;
+        }
 
-    <section class="about animate">
-        <h2>Apa itu A.K.A?</h2>
-        <p>A.K.A adalah kelompok kecil berisi 4 orang nolep dengan semangat meledak-ledak dalam berbagai proyek random.</p>
-    </section>
+        .dropdown-content.show {
+            max-height: 500px; /* This should be enough for the video */
+            box-shadow: 0 10px 25px rgba(118, 255, 3, 0.35);
+        }
 
-    <section class="members animate">
-        <h2>Siapa saja kami?</h2>
-        <div class="member-list">
-            <div class="member-card">
-                <div class = "member-name">Alan</div><br>
-                former & smartass
-            </div>
-            <div class="member-card">
-                <div class = "member-name">Nanda</div><br>
-                joker (funny)
-            </div>
-            <div class="member-card">
-                <div class = "member-name">Agus</div><br>
-                2nd former 2️⃣
-            </div>
-            <div class="member-card">
-               <div class = "member-name">Tugus</div><br>
-                ketua
+        .dropdown-video {
+            padding: 20px;
+        }
+
+        .dropdown-video .yt-video {
+            margin: 0 auto;
+        }
+
+        /* Glowing Pulse Animation for Dropdown Button */
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 10px rgba(118, 255, 3, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(118, 255, 3, 0.8), 0 0 30px rgba(205, 220, 57, 0.4); }
+            100% { box-shadow: 0 0 10px rgba(118, 255, 3, 0.5); }
+        }
+
+        .dropdown-btn {
+            animation: glow-pulse 2s infinite;
+        }
+ 
+    </style> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script> 
+    <audio id="opening-sound" src="griy/assets/bd.mp3" preload="auto"></audio> 
+    <audio id="click-sound" src="griy/assets/click.mp3" preload="auto"></audio> 
+</head> 
+<body> 
+    <canvas id="smoke-canvas"></canvas> 
+ 
+    <header class="animate"> 
+        <h1 class="glitch header-title" data-text="A.K.A - Task Manager">A.K.A - Task Manager</h1> 
+        <p>Selamat datang di website resmi A.K.A, sirkel nolep 4 orang. Lihat jadwal & tugas terbaru kami!</p> 
+    </header> 
+ 
+    <section class="about animate"> 
+        <h2>Apa itu A.K.A?</h2> 
+        <p>A.K.A adalah kelompok kecil berisi 4 orang nolep dengan semangat meledak-ledak dalam berbagai proyek random.</p> 
+    </section> 
+ 
+    <section class="members animate"> 
+        <h2>Siapa saja kami?</h2> 
+        <div class="member-list"> 
+            <div class="member-card"> 
+                <div class = "member-name">Alan</div><br> 
+                former & smartass 
+            </div> 
+            <div class="member-card"> 
+                <div class = "member-name">Nanda</div><br> 
+                joker (funny) 
+            </div> 
+            <div class="member-card"> 
+                <div class = "member-name">Agus</div><br> 
+                2nd former 2️⃣ 
+            </div> 
+            <div class="member-card"> 
+               <div class = "member-name">Tugus</div><br> 
+                ketua 
+            </div> 
+        </div> 
+    </section> 
+ 
+    <section class="tasks animate"> 
+        <h2>Jadwal & Tugas</h2> 
+        <table> 
+            <thead> 
+                <tr> 
+                    <th>No</th> 
+                    <th>Tugas</th> 
+                    <th>Deadline</th> 
+                    <th>Status</th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+                <tr> 
+                    <td>1</td> 
+                    <td>Membuat website A.K.A</td> 
+                    <td>30 Maret 2025</td> 
+                    <td>Selesai</td> 
+                </tr> 
+                <tr> 
+                    <td>2</td> 
+                    <td>Tamat</td> 
+                    <td>N/A</td> 
+                    <td>Belum Selesai</td> 
+                </tr> 
+                <tr> 
+                    <td>3</td> 
+                    <td>Party Lulus</td> 
+                    <td>2025</td> 
+                    <td>Belum Selesai</td> 
+                </tr> 
+            </tbody> 
+        </table> 
+    </section> 
+    
+    <!-- New Video Dropdown Section -->
+    <div class="video-dropdown animate">
+        <button class="dropdown-btn">Click to WATCH OUR EPIC VIDEO! 🔥</button>
+        <div class="dropdown-content">
+            <div class="dropdown-video">
+                <div class="yt-video">
+                    <iframe 
+                        src="https://www.youtube.com/embed/mDENhtA5SEQ?si=q5FsUoapySyenK5H" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
-    </section>
-
-    <section class="tasks animate">
-        <h2>Jadwal & Tugas</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Tugas</th>
-                    <th>Deadline</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Membuat website A.K.A</td>
-                    <td>30 Maret 2025</td>
-                    <td>Selesai</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Tamat</td>
-                    <td>N/A</td>
-                    <td>Belum Selesai</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Party Lulus</td>
-                    <td>2025</td>
-                    <td>Belum Selesai</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <footer class="animate">
-        <p>Dibuat oleh A.K.A [SMPN 1 ABIANSEMAL, IX J] | Hubungi former [Alan] kami di <a href="https://wa.me/+6285858044291">WhatsApp</a></p>
-        <p>Bagikan QR web kami:</p>
-        <img src="qrcode.png" alt="QR Code" width="150">
-    </footer>
-
-    <div class="yt-container animate">
-        <div class="yt-video">
-            <iframe
-                src="https://www.youtube.com/embed/VzAAdMLfNlg?si=yj-fZSQI0PyyzE2w"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-        </div>
     </div>
-
-    <div class="photo-gallery animate">
-        <img src="1.jpg" alt="Foto 1">
-        <img src="2.jpg" alt="Foto 2">
-        <img src="3.jpg" alt="Foto 3">
-        <img src="4.jpg" alt="Foto 4">
-    </div>
-
-    <script>
-        // Staggered animation on load
-        window.addEventListener('load', () => {
-            const elements = document.querySelectorAll('.animate');
-            elements.forEach((el, index) => {
-                el.style.animationDelay = `${index * 0.3}s`;
-            });
-
-            // Play opening sound
-            const openingSound = document.getElementById('opening-sound');
-            if (openingSound) { // Memastikan elemen audio ada
-                openingSound.play().then(() => {
-                    console.log("Opening sound played successfully");
-                }).catch(error => {
-                    console.warn("Opening sound failed to play:", error);
-                });
+ 
+    <div class="yt-container animate"> 
+        <div class="yt-video"> 
+            <iframe 
+                src="https://www.youtube.com/embed/VzAAdMLfNlg?si=yj-fZSQI0PyyzE2w" 
+                title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen> 
+            </iframe> 
+        </div> 
+    </div> 
+ 
+    <div class="photo-gallery animate"> 
+        <img src="1.jpg" alt="Foto 1"> 
+        <img src="2.jpg" alt="Foto 2"> 
+        <img src="3.jpg" alt="Foto 3"> 
+        <img src="4.jpg" alt="Foto 4"> 
+    </div> 
+ 
+    <footer class="animate"> 
+        <p>Dibuat oleh A.K.A [SMPN 1 ABIANSEMAL, IX J] | Hubungi former [Alan] kami di <a href="https://wa.me/+6285858044291">WhatsApp</a></p> 
+        <p>Bagikan QR web kami:</p> 
+        <img src="qrcode.png" alt="QR Code" width="150"> 
+    </footer> 
+ 
+    <script> 
+        // Staggered animation on load 
+        window.addEventListener('load', () => { 
+            const elements = document.querySelectorAll('.animate'); 
+            elements.forEach((el, index) => { 
+                el.style.animationDelay = `${index * 0.3}s`; 
+            }); 
+ 
+            // Play opening sound 
+            const openingSound = document.getElementById('opening-sound'); 
+            if (openingSound) { // Memastikan elemen audio ada 
+                openingSound.play().then(() => { 
+                    console.log("Opening sound played successfully"); 
+                }).catch(error => { 
+                    console.warn("Opening sound failed to play:", error); 
+                }); 
+            } else { 
+                console.warn("Opening sound element not found"); 
+            } 
+        }); 
+ 
+        // Efek Asap Hijau 
+        const canvas = document.getElementById('smoke-canvas'); 
+        const ctx = canvas.getContext('2d'); 
+        canvas.width = window.innerWidth; 
+        canvas.height = window.innerHeight; 
+ 
+        const particles = []; 
+        const particleCount = 50; 
+ 
+        function Particle(x, y, radius, velocityX, velocityY, color) { 
+            this.x = x; 
+            this.y = y; 
+            this.radius = radius; 
+            this.velocityX = velocityX; 
+            this.velocityY = velocityY; 
+            this.color = color; 
+            this.alpha = 1; 
+        } 
+ 
+        Particle.prototype.draw = function() { 
+            ctx.globalAlpha = this.alpha; 
+            ctx.beginPath(); 
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); 
+            ctx.fillStyle = this.color; 
+            ctx.fill(); 
+            ctx.globalAlpha = 1; 
+        }; 
+ 
+        Particle.prototype.update = function() { 
+            this.x += this.velocityX; 
+            this.y += this.velocityY; 
+            this.alpha -= 0.0015; // Diubah untuk memperlambat asap, sebelumnya 0.0025 
+            this.radius *= 1.0015; // Diubah untuk memperlambat perubahan ukuran, sebelumnya 0.0025 
+ 
+            if (this.alpha <= 0) { 
+                this.x = Math.random() * canvas.width; 
+                this.y = canvas.height; 
+                this.alpha = 1; 
+                this.radius = Math.random() * 5 + 2; 
+                this.velocityX = (Math.random() - 0.5) * 2; 
+                this.velocityY = -Math.random() * 2; 
+            } 
+ 
+            this.draw(); 
+        }; 
+ 
+        function init() { 
+            for (let i = 0; i < particleCount; i++) { 
+                const radius = Math.random() * 5 + 2; 
+                const x = Math.random() * canvas.width; 
+                const y = canvas.height; 
+                const velocityX = (Math.random() - 0.5) * 2; 
+                const velocityY = -Math.random() * 2; 
+                const color = `rgba(118, 255, 3, ${Math.random() * 0.5})`; 
+                particles.push(new Particle(x, y, radius, velocityX, velocityY, color)); 
+            } 
+        } 
+ 
+        function animate() { 
+            requestAnimationFrame(animate); 
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+ 
+            particles.forEach(particle => { 
+                particle.update(); 
+            }); 
+        } 
+ 
+        init(); 
+        animate(); 
+ 
+        window.addEventListener('resize', () => { 
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+        }); 
+        
+        // Dropdown functionality
+        const dropdownBtn = document.querySelector('.dropdown-btn');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        
+        dropdownBtn.addEventListener('click', () => {
+            dropdownBtn.classList.toggle('active');
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
             } else {
-                console.warn("Opening sound element not found");
-            }
-        });
-
-        // Efek Asap Hijau
-        const canvas = document.getElementById('smoke-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particles = [];
-        const particleCount = 50;
-
-        function Particle(x, y, radius, velocityX, velocityY, color) {
-            this.x = x;
-            this.y = y;
-            this.radius = radius;
-            this.velocityX = velocityX;
-            this.velocityY = velocityY;
-            this.color = color;
-            this.alpha = 1;
-        }
-
-        Particle.prototype.draw = function() {
-            ctx.globalAlpha = this.alpha;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.fill();
-            ctx.globalAlpha = 1;
-        };
-
-        Particle.prototype.update = function() {
-            this.x += this.velocityX;
-            this.y += this.velocityY;
-            this.alpha -= 0.0015; // Diubah untuk memperlambat asap, sebelumnya 0.0025
-            this.radius *= 1.0015; // Diubah untuk memperlambat perubahan ukuran, sebelumnya 0.0025
-
-            if (this.alpha <= 0) {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height;
-                this.alpha = 1;
-                this.radius = Math.random() * 5 + 2;
-                this.velocityX = (Math.random() - 0.5) * 2;
-                this.velocityY = -Math.random() * 2;
-            }
-
-            this.draw();
-        };
-
-        function init() {
-            for (let i = 0; i < particleCount; i++) {
-                const radius = Math.random() * 5 + 2;
-                const x = Math.random() * canvas.width;
-                const y = canvas.height;
-                const velocityX = (Math.random() - 0.5) * 2;
-                const velocityY = -Math.random() * 2;
-                const color = `rgba(118, 255, 3, ${Math.random() * 0.5})`;
-                particles.push(new Particle(x, y, radius, velocityX, velocityY, color));
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => {
-                particle.update();
-            });
-        }
-
-        init();
-        animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
-    <script>
-        document.addEventListener("mousemove", function(e){
-            const sparkle = document.createElement("div");
-            sparkle.className = "sparkle";
-            sparkle.style.left = e.pageX + "px";
-            sparkle.style.top = e.pageY + "px";
-            document.body.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 500);
-        });
-
-        // Enlargening effect on hover for member names
-        const memberCards = document.querySelectorAll('.member-card');
-        const clickSound = document.getElementById('click-sound');
-        memberCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const nameElement = card.querySelector('.member-name');
-                nameElement.style.fontSize = '1.3em';
-                if (clickSound) { // Memastikan elemen audio ada
+                dropdownContent.classList.add('show');
+                if (clickSound) {
                     clickSound.play().catch(error => {
                         console.warn("Click sound failed to play:", error);
                     });
-                } else {
-                    console.warn("Click sound element not found");
                 }
-            });
-
-            card.addEventListener('mouseleave', () => {
-                const nameElement = card.querySelector('.member-name');
-                nameElement.style.fontSize = '1em';
-            });
-        });
-
-        // Enlarging effect for the entire table on hover
-        const table = document.querySelector('table');
-        const clickSoundTable = document.getElementById('click-sound');
-        table.addEventListener('mouseenter', () => {
-            table.style.transform = 'scale(1.1)'; /* Memperbesar seluruh tabel saat hover */
-            table.style.boxShadow = '0 10px 20px rgba(118, 255, 3, 0.3)';
-            table.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-            if (clickSoundTable) {
-                clickSoundTable.play().catch(error => {
-                    console.warn("Click sound failed to play:", error);
-                });
-            } else {
-                console.warn("Click sound element not found");
             }
         });
-
-        table.addEventListener('mouseleave', () => {
-            table.style.transform = 'scale(1)'; /* Mengembalikan ukuran semula */
-            table.style.boxShadow = 'none';
-            table.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-        });
-    </script>
-</body>
+    </script> 
+    <script> 
+        document.addEventListener("mousemove", function(e){ 
+            const sparkle = document.createElement("div"); 
+            sparkle.className = "sparkle"; 
+            sparkle.style.left = e.pageX + "px"; 
+            sparkle.style.top = e.pageY + "px"; 
+            document.body.appendChild(sparkle); 
+            setTimeout(() => sparkle.remove(), 500); 
+        }); 
+ 
+        // Enlargening effect on hover for member names 
+        const memberCards = document.querySelectorAll('.member-card'); 
+        const clickSound = document.getElementById('click-sound'); 
+        memberCards.forEach(card => { 
+            card.addEventListener('mouseenter', () => { 
+                const nameElement = card.querySelector('.member-name'); 
+                nameElement.style.fontSize = '1.3em'; 
+                if (clickSound) { // Memastikan elemen audio ada 
+                    clickSound.play().catch(error => { 
+                        console.warn("Click sound failed to play:", error); 
+                    }); 
+                } else { 
+                    console.warn("Click sound element not found"); 
+                } 
+            }); 
+ 
+            card.addEventListener('mouseleave', () => { 
+                const nameElement = card.querySelector('.member-name'); 
+                nameElement.style.fontSize = '1em'; 
+            }); 
+        }); 
+ 
+        // Enlarging effect for the entire table on hover 
+        const table = document.querySelector('table'); 
+        const clickSoundTable = document.getElementById('click-sound'); 
+        table.addEventListener('mouseenter', () => { 
+            table.style.transform = 'scale(1.1)'; /* Memperbesar seluruh tabel saat hover */ 
+            table.style.boxShadow = '0 10px 20px rgba(118, 255, 3, 0.3)'; 
+            table.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; 
+            if (clickSoundTable) { 
+                clickSoundTable.play().catch(error => { 
+                    console.warn("Click sound failed to play:", error); 
+                }); 
+            } else { 
+                console.warn("Click sound element not found"); 
+            } 
+        }); 
+ 
+        table.addEventListener('mouseleave', () => { 
+            table.style.transform = 'scale(1)'; /* Mengembalikan ukuran semula */ 
+            table.style.boxShadow = 'none'; 
+            table.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; 
+        }); 
+    </script> 
+</body> 
 </html>
